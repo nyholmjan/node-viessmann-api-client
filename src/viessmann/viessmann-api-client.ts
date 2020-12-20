@@ -1,4 +1,4 @@
-import Optional from 'typescript-optional';
+import { Optional } from 'typescript-optional';
 import {Either, leftPromiseTransformer} from '../lib/either';
 
 import {log, LoggerFunction, setCustomLogger} from '../lib/logger';

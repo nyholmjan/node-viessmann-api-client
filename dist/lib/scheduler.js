@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Scheduler = void 0;
+const cron_1 = require("cron");
 const logger_1 = require("./logger");
 class Scheduler {
     constructor(intervalInMs, onTick) {
@@ -9,13 +11,14 @@ class Scheduler {
     }
     start() {
         if (this.isStopped()) {
-            this.timer = setInterval(() => this.onTick(), this.intervalInMs);
+            this.timer = new cron_1.CronJob('* * * * *', () => this.onTick());
+            this.timer.start();
             logger_1.log('Scheduler started', 'debug');
         }
     }
     stop() {
         if (!this.isStopped()) {
-            clearInterval(this.timer);
+            this.timer.stop();
             this.timer = null;
             logger_1.log('Scheduler stopped', 'debug');
         }

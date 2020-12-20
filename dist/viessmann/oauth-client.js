@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OAuthClient = exports.RequestFailed = exports.AuthenticationFailed = void 0;
 const request = require("request-promise-native");
 const simpleOAuth = require("simple-oauth2");
 const logger_1 = require("../lib/logger");
