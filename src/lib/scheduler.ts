@@ -1,21 +1,23 @@
-import {log} from './logger';
+import { CronJob } from 'cron';
+import { log } from './logger';
 export type OnTick = () => void;
 export class Scheduler {
 
-    private timer: NodeJS.Timeout = null;
+    private timer: CronJob = null;
 
-    constructor(private readonly intervalInMs: number, private readonly onTick: OnTick) {}
+    constructor(private readonly intervalInMs: number, private readonly onTick: OnTick) { }
 
     public start(): void {
         if (this.isStopped()) {
-            this.timer = setInterval(() => this.onTick(), this.intervalInMs);
+            this.timer = new CronJob('* * * * *', () => this.onTick());
+            this.timer.start();
             log('Scheduler started', 'debug');
         }
     }
 
     public stop(): void {
         if (!this.isStopped()) {
-            clearInterval(this.timer);
+            this.timer.stop();
             this.timer = null;
             log('Scheduler stopped', 'debug');
         }
