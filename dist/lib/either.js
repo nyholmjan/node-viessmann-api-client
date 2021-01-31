@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Either = exports.leftPromiseTransformer = exports.leftUnitTransformer = exports.either = exports.EitherType = void 0;
 const typescript_optional_1 = require("typescript-optional");
 var EitherType;
 (function (EitherType) {
@@ -93,15 +92,15 @@ class Either {
     }
     toRight() {
         if (this.isRight()) {
-            return typescript_optional_1.Optional.ofNullable(this.r);
+            return typescript_optional_1.default.ofNullable(this.r);
         }
-        return typescript_optional_1.Optional.empty();
+        return typescript_optional_1.default.empty();
     }
     toLeft() {
         if (this.isLeft()) {
-            return typescript_optional_1.Optional.ofNullable(this.l);
+            return typescript_optional_1.default.ofNullable(this.l);
         }
-        return typescript_optional_1.Optional.empty();
+        return typescript_optional_1.default.empty();
     }
 }
 exports.Either = Either;

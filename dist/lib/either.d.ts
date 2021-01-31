@@ -1,4 +1,4 @@
-import { Optional } from 'typescript-optional';
+import Optional from 'typescript-optional';
 export declare enum EitherType {
     Left = 0,
     Right = 1

@@ -1,4 +1,4 @@
-import { Optional } from 'typescript-optional';
+import Optional from 'typescript-optional';
 import {Either} from '../lib/either';
 import {log} from '../lib/logger';
 import {NumberUtils} from '../lib/number-utils';
