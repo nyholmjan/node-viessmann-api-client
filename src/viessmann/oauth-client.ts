@@ -150,7 +150,7 @@ export class OAuthClient {
         };
 
         return request(options)
-            .then((response) => this.extractAuthCode(response));
+            .then((response: any) => this.extractAuthCode(response));
     }
 
     private authUrl(): string {

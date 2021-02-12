@@ -1,4 +1,4 @@
-import Optional from 'typescript-optional';
+import { Optional } from 'typescript-optional';
 import { Either } from '../lib/either';
 import { Action, Entity } from '../parser/siren';
 export interface MetaInformation {

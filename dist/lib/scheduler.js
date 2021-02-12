@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Scheduler = void 0;
 const cron_1 = require("cron");
 const logger_1 = require("./logger");
 class Scheduler {

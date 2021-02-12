@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Client = void 0;
 const either_1 = require("../lib/either");
 const logger_1 = require("../lib/logger");
 const scheduler_1 = require("../lib/scheduler");

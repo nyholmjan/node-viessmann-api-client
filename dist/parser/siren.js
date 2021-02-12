@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Entity = exports.Action = exports.Link = void 0;
 class Link {
     constructor(link) {
         this.rel = [];

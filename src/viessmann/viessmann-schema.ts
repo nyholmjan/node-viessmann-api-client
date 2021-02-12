@@ -1,4 +1,4 @@
-import Optional from 'typescript-optional';
+import { Optional } from 'typescript-optional';
 import {Either} from '../lib/either';
 import {log} from '../lib/logger';
 import {Action, Entity} from '../parser/siren';
@@ -139,7 +139,6 @@ function getMetaInformation(entity: Entity): Optional<MetaInformation> {
             && m.feature !== undefined
             && m.uri !== undefined
             && m.deviceId !== undefined)[0];
-
     return Optional.ofNullable(result);
 }
 

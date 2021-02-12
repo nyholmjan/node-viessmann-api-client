@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SirenFeature = exports.FeatureAction = exports.ComplexProperty = exports.SimpleProperty = void 0;
 const typescript_optional_1 = require("typescript-optional");
 const either_1 = require("../lib/either");
 const logger_1 = require("../lib/logger");
@@ -98,7 +99,7 @@ class SirenFeature {
 exports.SirenFeature = SirenFeature;
 function getMetaInformation(entity) {
     if (!isFeature(entity)) {
-        return typescript_optional_1.default.empty();
+        return typescript_optional_1.Optional.empty();
     }
     const result = entity.entities
         .filter(e => e.rel.indexOf('http://schema.viessmann.com/link-relations#feature-meta-information') > -1)
@@ -110,7 +111,7 @@ function getMetaInformation(entity) {
         && m.feature !== undefined
         && m.uri !== undefined
         && m.deviceId !== undefined)[0];
-    return typescript_optional_1.default.ofNullable(result);
+    return typescript_optional_1.Optional.ofNullable(result);
 }
 function selectLeafFeaturesOf(entity) {
     const grandChildren = entity.entities.map(e => selectLeafFeaturesOf(e));
@@ -141,17 +142,17 @@ function hasProperties(entity) {
 const simpleTypes = ['string', 'number', 'boolean', 'array'];
 function constructProperty(name, raw) {
     if (raw === undefined || raw === null || 'object' !== typeof raw) {
-        return typescript_optional_1.default.empty();
+        return typescript_optional_1.Optional.empty();
     }
     const type = raw.type;
     const value = raw.value;
     if (type === undefined || value === undefined) {
-        return typescript_optional_1.default.empty();
+        return typescript_optional_1.Optional.empty();
     }
     if (simpleTypes.indexOf(type) > -1) {
-        return typescript_optional_1.default.of(new SimpleProperty(name, type, value));
+        return typescript_optional_1.Optional.of(new SimpleProperty(name, type, value));
     }
-    return typescript_optional_1.default.of(new ComplexProperty(name, type, value));
+    return typescript_optional_1.Optional.of(new ComplexProperty(name, type, value));
 }
 function flatten(arr, result = []) {
     for (let i = 0, length = arr.length; i < length; i++) {

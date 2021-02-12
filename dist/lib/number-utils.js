@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NumberUtils = void 0;
 const big_js_1 = require("big.js");
 class NumberUtils {
     static isStepping(start, value, stepping) {
