@@ -9,7 +9,7 @@ export class Scheduler {
 
     public start(): void {
         if (this.isStopped()) {
-            this.timer = new CronJob('* * * * *', () => this.onTick());
+            this.timer = new CronJob('*/2 * * * *', () => this.onTick());
             this.timer.start();
             log('Scheduler started', 'debug');
         }
