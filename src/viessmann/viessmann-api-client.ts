@@ -11,7 +11,7 @@ export interface ViessmannClientConfig {
     auth: ViessmannOAuthConfig;
     api: ViessmannAPIURLs;
     logger?: LoggerFunction;
-    pollInterval?: number;
+    cronString?: string;
 }
 
 export interface ViessmannAPIURLs {
@@ -40,9 +40,9 @@ export class Client {
     constructor(private readonly config: ViessmannClientConfig, oauth?: OAuthClient) {
         setCustomLogger(config.logger);
         this.oauth = oauth !== undefined ? oauth : new OAuthClient(config.auth);
-        const pollInterval = config.pollInterval !== undefined ? config.pollInterval : 60000;
-        log(`ViessmannClient: initializing with pollIntervall ${pollInterval}`);
-        this.scheduler = new Scheduler(pollInterval, async () => {
+        const cronString = config.cronString !== undefined ? config.cronString : "* * * * *";
+        log(`ViessmannClient: initializing with pollIntervall ${cronString}`);
+        this.scheduler = new Scheduler(cronString, async () => {
             log('ViessmannClient: polling for updates...', 'debug');
             this.fetchFeatures()
                 .then(features => Array.from(features.values()))

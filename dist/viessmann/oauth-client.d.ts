@@ -18,8 +18,8 @@ export declare class AuthenticationFailed extends Error {
     constructor(message: string);
 }
 export declare class RequestFailed extends Error {
-    readonly status: number;
-    constructor(status: number);
+    readonly status: any;
+    constructor(status: any);
 }
 export declare class OAuthClient {
     private config;

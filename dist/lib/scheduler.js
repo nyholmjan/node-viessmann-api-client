@@ -4,14 +4,14 @@ exports.Scheduler = void 0;
 const cron_1 = require("cron");
 const logger_1 = require("./logger");
 class Scheduler {
-    constructor(intervalInMs, onTick) {
-        this.intervalInMs = intervalInMs;
+    constructor(cronString, onTick) {
+        this.cronString = cronString;
         this.onTick = onTick;
         this.timer = null;
     }
     start() {
         if (this.isStopped()) {
-            this.timer = new cron_1.CronJob('* * * * *', () => this.onTick());
+            this.timer = new cron_1.CronJob(this.cronString, () => this.onTick());
             this.timer.start();
             logger_1.log('Scheduler started', 'debug');
         }

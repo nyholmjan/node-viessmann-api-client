@@ -94,7 +94,7 @@ class OAuthClient {
                         return {};
                 }
                 else {
-                    throw new RequestFailed(response.statusCode);
+                    throw new RequestFailed({ body: JSON.parse(response.body), status });
                 }
             });
         });

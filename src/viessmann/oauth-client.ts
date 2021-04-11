@@ -30,7 +30,7 @@ export class AuthenticationFailed extends Error {
 }
 
 export class RequestFailed extends Error {
-    constructor(public readonly status: number) {
+    constructor(public readonly status: any) {
         super(`Request failed with status ${status}`);
         Object.setPrototypeOf(this, RequestFailed.prototype);
     }
@@ -93,7 +93,7 @@ export class OAuthClient {
                         return JSON.parse(response.body);
                     } else return {};
                 } else {
-                    throw new RequestFailed(response.statusCode);
+                    throw new RequestFailed({ body: JSON.parse(response.body), status });
                 }
             });
     }

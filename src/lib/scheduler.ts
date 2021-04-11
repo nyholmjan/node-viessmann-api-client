@@ -5,11 +5,11 @@ export class Scheduler {
 
     private timer: CronJob = null;
 
-    constructor(private readonly intervalInMs: number, private readonly onTick: OnTick) { }
+    constructor(private readonly cronString: string, private readonly onTick: OnTick) { }
 
     public start(): void {
         if (this.isStopped()) {
-            this.timer = new CronJob('*/2 * * * *', () => this.onTick());
+            this.timer = new CronJob(this.cronString, () => this.onTick());
             this.timer.start();
             log('Scheduler started', 'debug');
         }

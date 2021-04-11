@@ -6,7 +6,7 @@ export interface ViessmannClientConfig {
     auth: ViessmannOAuthConfig;
     api: ViessmannAPIURLs;
     logger?: LoggerFunction;
-    pollInterval?: number;
+    cronString?: string;
 }
 export interface ViessmannAPIURLs {
     host: string;
